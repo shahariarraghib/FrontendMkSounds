@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { sideBarMenu } from "../utility/constant";
 
 const SideBar = () => {
@@ -16,17 +17,14 @@ const SideBar = () => {
 
       <div className="mt-[72px]">
         {sideBarMenu.map((item, index) => (
-          <a href="#" key={index} className="flex">
-            {item[2] === "active" ? (
-              <div className="w-[20px] h-[42px] bg-[#09FB5B] rounded-r-lg mr-[24px]"></div>
-            ) : (
-              <div className="w-[20px] h-[42px] bg-[white] mr-[24px]"></div>
-            )}
+          <NavLink to={item[0]} href="#" key={index} className="flex">
+            <div className="w-[20px] h-[42px] bg-[white] mr-[24px]"></div>
+
             <div className="flex  items-center gap-4 mb-[42px]  ">
-              <img src={item[0]} alt="" className="w-[25px] h-[25px]" />
-              <h1 className="text-[20px] font-semibold">{item[1]}</h1>
+              <img src={item[1]} alt="" className="w-[25px] h-[25px]" />
+              <h1 className="text-[20px] font-semibold">{item[2]}</h1>
             </div>
-          </a>
+          </NavLink>
         ))}
       </div>
 

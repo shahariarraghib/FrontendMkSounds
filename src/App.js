@@ -1,7 +1,8 @@
+import { Navigate, Route, Routes } from "react-router";
 import Header from "./components/header";
-import Navbar from "./components/navbar";
-import SideBar from "./components/sideBar";
 import useFetch from "./hooks/useFetch";
+import Dashboard from "./Page/Dashboard";
+import Team from "./Page/Team";
 
 function App() {
   const [data, loading] = useFetch();
@@ -10,12 +11,14 @@ function App() {
   }
 
   return (
-    <div className="grid grid-cols-12">
-      <SideBar />
-      <div className="col-span-10">
-        <Navbar />
-        <Header data={data} />
-      </div>
+    <div>
+      <Routes>
+        <Route path="/" element={<Dashboard />}>
+          <Route index element={<Navigate to={"home"} />} />
+          <Route path="home" element={<Header data={data} />} />
+          <Route path="contact" element={<Team />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
